@@ -6,7 +6,7 @@ using namespace std;
 
 int main(int argsc, char **args)
 {
-	std::cout << "Test\n";
+	cout << "That's embarrassing, I should have used g++\n";
 	return 0;
 }
 
