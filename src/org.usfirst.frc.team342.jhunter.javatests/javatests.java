@@ -14,5 +14,13 @@ public class javatests {
 	public static void main(String[] args)
 	{
 		System.out.println("Hello!");
+		if (args.length > 1)
+		{
+			System.out.println("You typed: " + args[1]);
+		}
+		else
+		{
+			System.out.println("No args?");
+		}
 	}
 }
