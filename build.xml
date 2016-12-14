@@ -42,7 +42,7 @@
 	<target name="jar" depends="clean-build">
 		<jar destfile="${dist.dir}\javatests.jar" basedir="${build.dir}">
 		<manifest>
-		<attribute name="MainClass" value="javatests.main" />
+		<attribute name="Main-Class" value="org.usfirst.frc.team342.jhunter.javatests.javatests" />
 		</manifest>
 		</jar>
 	</target>
