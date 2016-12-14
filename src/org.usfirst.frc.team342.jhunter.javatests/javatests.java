@@ -13,6 +13,6 @@ public class javatests {
 
 	void main()
 	{
-
+		System.out.println("Hello!");
 	}
 }
