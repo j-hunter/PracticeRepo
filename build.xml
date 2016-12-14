@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+
+<project name="PracticeRepo" default="main" basedir=".">
+
+	<property name="src.dir" location="src" />
+	<property name="build.dir" location="bin" />
+	<property name="docs.dir" location="docs" />
+	<property name="dist.dir" location="dist" />
+
+	<!-- Delete working folders-->
+	<target name="clean">
+		<delete dir="${build.dir}" />
+		<delete dir="${docs.dir}" />
+		<delete dir="${dist.dir}" />
+
+	</target>
+
+	<!-- Make working folders-->
+	<target name="makedir">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${docs.dir}" />
+		<mkdir dir="${dist.dir}" />
+	</target>
+
+	<!-- Make a fresh build-->
+	<target name="clean-build" depends="clean,makedir">
+		<javac srcdir="${src.dir}" destdir="${build.dir}" >
+		</javac>
+
+	</target>
+
+	<!-- Makes.. javadocs?-->
+	<target name="docs" depends="clean-build">
+		<javadoc packagenames="src" sourcepath="${src.dir}" destdir="${docs.dir}">
+			<fileset dir="${src.dir}">
+			<include name="**" />
+			</fileset>
+		</javadoc>
+	</target>
+
+	<!-- Make a jar!-->
+	<target name="jar" depends="clean-build">
+		<jar destfile="${dist.dir}\javatests.jar" basedir="${build.dir}">
+		<manifest>
+		<attribute name="MainClass" value="javatests.main" />
+		</manifest>
+		</jar>
+	</target>
+	
+	<!-- default build-->
+	<target name="main" depends="clean-build, jar, docs">
+		<description>Default</description>
+	</target>
+
+</project>
