@@ -2,12 +2,16 @@
 
 package org.usfirst.frc.team342.jhunter.javatests;
 
+import org.usfirst.frc.team342.jhunter.javatests.widgitsim;
+
 public class javatests {
 	
+	private widgitsim mysim;
+
 
 	javatests()
 	{
-
+		mysim = new widgitsim();
 	}
 
 
