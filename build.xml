@@ -21,7 +21,7 @@
 		<delete dir="${docs.dir}" />
 		<delete dir="${dist.dir}" />
 		<delete dir="${test-build.dir}" />
-
+		<delete dir="${test-report.dir}" />
 	</target>
 
 	<!-- Make working folders-->
@@ -29,6 +29,7 @@
 		<mkdir dir="${build.dir}" />
 		<mkdir dir="${docs.dir}" />
 		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${test-report.dir}" />
 		<mkdir dir="${test-build.dir}" />
 	</target>
 
