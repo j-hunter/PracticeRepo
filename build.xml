@@ -6,12 +6,21 @@
 	<property name="build.dir" location="bin" />
 	<property name="docs.dir" location="docs" />
 	<property name="dist.dir" location="dist" />
+	<property name="test.dir" location="tests" />
+	<property name="test-build.dir" location="testsbuild" />
+	<property name="test-report.dir" location="reports" />
 
+	<path id="junit.class.path">
+		<pathelement location="lib/junit4-4.11.jar" />
+		<pathelement location="lib/hamcrest-core-1.3.jar" />
+		<pathelement location="${build.dir}" />
+	</path>
 	<!-- Delete working folders-->
 	<target name="clean">
 		<delete dir="${build.dir}" />
 		<delete dir="${docs.dir}" />
 		<delete dir="${dist.dir}" />
+		<delete dir="${test-build.dir}" />
 
 	</target>
 
@@ -20,6 +29,7 @@
 		<mkdir dir="${build.dir}" />
 		<mkdir dir="${docs.dir}" />
 		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${test-build.dir}" />
 	</target>
 
 	<!-- Make a fresh build-->
@@ -27,6 +37,29 @@
 		<javac srcdir="${src.dir}" destdir="${build.dir}" >
 		</javac>
 
+	</target>
+
+	<!-- Make the tests-->
+	<target name="tests-build" depends="clean,makedir">
+		<javac srcdir="${test.dir}" destdir="${test-build.dir}">
+			<classpath refid="junit.class.path" />
+		</javac>
+	</target>
+
+	<!-- Run some tests!-->
+	<target name="test" depends="clean-build,tests-build">
+	<junit printsummary="on" fork = "true">
+		<classpath refid="junit.class.path" />
+		<classpath>
+			<pathelement location="${test-build.dir}" />
+		</classpath>
+		<formatter type="xml" />
+		<batchtest todir="${test-report.dir}">
+			<fileset dir="${test.dir}">
+				<include name="**/*Test*.java" />
+			</fileset>
+		</batchtest>
+	</junit>
 	</target>
 
 	<!-- Makes.. javadocs?-->
