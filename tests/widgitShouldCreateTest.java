@@ -3,7 +3,7 @@ import org.junit.Test;
 import org.junit.Assert;
 import org.usfirst.frc.team342.jhunter.javatests.widgit;
 
-public class wigitShouldCreateTest
+public class widgitShouldCreateTest
 {
 
 	@Test
