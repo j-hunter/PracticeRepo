@@ -40,15 +40,22 @@
 
 	</target>
 
+	<!-- Make a build-->
+	<target name="build" depends="makedir">
+		<javac srcdir="${src.dir}" destdir="${build.dir}" >
+		</javac>
+
+	</target>
+	
 	<!-- Make the tests-->
-	<target name="tests-build" depends="clean,makedir">
+	<target name="tests-build" depends="makedir">
 		<javac srcdir="${test.dir}" destdir="${test-build.dir}">
 			<classpath refid="junit.class.path" />
 		</javac>
 	</target>
 
 	<!-- Run some tests!-->
-	<target name="test" depends="clean-build,tests-build">
+	<target name="test" depends="build,tests-build">
 	<junit printsummary="on" fork = "true">
 		<classpath refid="junit.class.path" />
 		<classpath>
@@ -64,7 +71,7 @@
 	</target>
 
 	<!-- Makes.. javadocs?-->
-	<target name="docs" depends="clean-build">
+	<target name="docs" depends="build">
 		<javadoc packagenames="src" sourcepath="${src.dir}" destdir="${docs.dir}">
 			<fileset dir="${src.dir}">
 			<include name="**" />
@@ -73,7 +80,7 @@
 	</target>
 
 	<!-- Make a jar!-->
-	<target name="jar" depends="clean-build">
+	<target name="jar" depends="build">
 		<jar destfile="${dist.dir}\javatests.jar" basedir="${build.dir}">
 		<manifest>
 		<attribute name="Main-Class" value="org.usfirst.frc.team342.jhunter.javatests.javatests" />
@@ -82,7 +89,7 @@
 	</target>
 	
 	<!-- default build-->
-	<target name="main" depends="clean-build, jar, docs">
+	<target name="main" depends="build, jar, docs">
 		<description>Default</description>
 	</target>
 

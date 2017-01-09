@@ -14,7 +14,7 @@ public class widgitShouldCopyDefTest
 		testNum = testing.getLocX();
 		testNum = 5.0;
 
-		Assert.assertEquals(testing.getLocX(), 2.0);
+		Assert.assertEquals(testing.getLocX(), 2.0, 0.00001);
 	}
 
 
