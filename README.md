@@ -1,2 +1,2 @@
 # PracticeRepo
-Used for practicing GitHub and Git features
+Used for practicing GitHub and Git features. Also Jenkins automation.
